@@ -29,10 +29,13 @@ class User < ApplicationRecord
   }
 
   # Spoken and written language of an user, default would be 'en' for internationalization purpose (database setup)
+  # Using a prefix to not conflict with expert_language attribute.
+  # Enum generated method will then be: speak_(enum)?
   enum language: {
     en: 0,
     fr: 1
-  }
+  },
+   _prefix: :speak
 
   # ----------------------------------------
   # EXAMINER
