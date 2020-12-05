@@ -29,7 +29,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'jsonapi-serializer'
 
 # Whenever is a Ruby gem that provides a clear syntax for writing and deploying cron jobs.
-gem 'whenever'
+gem 'whenever', require: false
 
 
 group :development, :test do
