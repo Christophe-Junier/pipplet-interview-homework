@@ -19,6 +19,13 @@ class User < ApplicationRecord
   validates :role, presence: true
   validates :language, presence: true
 
+  ## Scopes
+
+  # Basic scope to retrieve a type of user
+  scope :test_takers, -> { where( role: 0) }
+  scope :admins,      -> { where( role: 1) }
+  scope :examiners,   -> { where( role: 2) }
+
   ## Attributes
 
   # Role of the user -> default is test_taker (database setup)
@@ -40,10 +47,6 @@ class User < ApplicationRecord
   # ----------------------------------------
   # EXAMINER
   # ----------------------------------------
-
-  ## Scopes
-  # scope :valid_for_correction, -> { where( role: 2,
-  #                                          status: [0,1] ) }
 
   ## Attributes
 
