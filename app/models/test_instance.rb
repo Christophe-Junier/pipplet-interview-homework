@@ -9,10 +9,15 @@ class TestInstance < ApplicationRecord
   ## Relations
 
   # Every kind of of test instance will have at least 2 users ( a test taker and an examiner )
-  # But an user can also have many test_instances assigned to it
+  # But an user can also have many test_instances assigned to it ( like an examiner user )
   # A good way to get throught many to many associations is to have a third table.
   has_many :user_test_instances
   has_many :users, through: :user_test_instances
+
+  ## Validations
+
+  validates :status_hash, presence: true
+  validates :language, presence: true
 
   ## Attributes
 

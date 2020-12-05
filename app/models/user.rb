@@ -12,6 +12,13 @@ class User < ApplicationRecord
   has_many :user_test_instances
   has_many :test_instances, through: :user_test_instances
 
+  ## Validations
+
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :role, presence: true
+  validates :language, presence: true
+
   ## Attributes
 
   # Role of the user -> default is test_taker (database setup)
@@ -32,8 +39,8 @@ class User < ApplicationRecord
   # ----------------------------------------
 
   ## Scopes
-  scope :valid_for_correction, -> { where( role: 2,
-                                           status: [0,1] ) }
+  # scope :valid_for_correction, -> { where( role: 2,
+  #                                          status: [0,1] ) }
 
   ## Attributes
 
