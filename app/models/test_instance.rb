@@ -45,7 +45,7 @@ class TestInstance < ApplicationRecord
 
   # Assign an examiner to the test instance (same language and lowest number of test in the last 7 days)
   # If there are no examiner available, the test instance is still created, but no examiners are assigned to it.
-  # The best way I found is to recompute them using whenever every hours.
+  # The best way I found is to recompute them using whenever every days.
   def assign_examiner
     valid_examiners = User.examiners
                           .can_take_test_instance
