@@ -6,6 +6,10 @@ class Api::V1::User::TestInstancesController < ApplicationController
 
     # If user doesnt exist or isnt a test taker
     return render json: { message: 'incorrect user id' }, status: 422 if @user.nil?
+
+    @user_test_instances = @user.test_instances
+    @data = TestInstanceSerializer.new(@user_test_instances).serializable_hash.to_json
+    return render json: @data, status: 200
   end
 
   def create
