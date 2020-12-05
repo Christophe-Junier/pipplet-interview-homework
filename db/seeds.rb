@@ -49,3 +49,13 @@ end
 # ----------------------------------------
 # TESTINSTANCE: a test taken by a test_taker user and corrected by an examiner user.
 # ----------------------------------------
+
+# Repeating N time to ease creation of datas
+# Using array of language to ease creation of datas
+3.times do
+  (1..5).to_a.each do |language|
+    TestInstance.create(
+      language: language
+    )
+  end
+end

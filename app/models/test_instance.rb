@@ -16,7 +16,6 @@ class TestInstance < ApplicationRecord
 
   ## Validations
 
-  validates :status_hash, presence: true
   validates :language, presence: true
 
   ## Attributes
@@ -30,6 +29,8 @@ class TestInstance < ApplicationRecord
     it: 4,
     es: 5
   }
+
+  ## Methods
 
   private
 
