@@ -10,6 +10,9 @@ ADD Gemfile /pipplet/Gemfile
 ADD Gemfile.lock /pipplet/Gemfile.lock
 RUN bundle install
 
+# Ensure whenever execute on development
+RUN bundle exec whenever --update-crontab --set environment='development'
+
 # Expose our server port.
 EXPOSE 3000
 
