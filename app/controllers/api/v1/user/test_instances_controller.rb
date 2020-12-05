@@ -7,8 +7,13 @@ class Api::V1::User::TestInstancesController < ApplicationController
     # If user doesnt exist or isnt a test taker
     return render json: { message: 'incorrect user id' }, status: 422 if @user.nil?
 
+    # Retrieving all test instances of the user
     @user_test_instances = @user.test_instances
+
+    # Serializing user test instance , to json.
     @data = TestInstanceSerializer.new(@user_test_instances).serializable_hash.to_json
+
+    # Returning data
     return render json: @data, status: 200
   end
 
@@ -22,7 +27,7 @@ class Api::V1::User::TestInstancesController < ApplicationController
     # A little bit tricky, due to enum taking over all kind of errors, we need to manually test if the language is uncorrect.
     return  render json: { message: 'incorrect language' }, status: 422 unless TestInstance.assert_existence(params[:language])
 
-    # Initializing a new test instance and its user
+    # Initializing a new test instance and its user, then computing status_hash
     @test_instance = TestInstance.new(test_instance_params)
     @test_instance.users << @user
 

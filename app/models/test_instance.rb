@@ -17,7 +17,7 @@ class TestInstance < ApplicationRecord
   # Callbacks
 
   # Assign an examiner to a test instance before its save.
-  before_save :assign_examiner
+  before_create :assign_examiner
 
   ## Validations
 
