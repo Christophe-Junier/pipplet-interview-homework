@@ -14,6 +14,11 @@ class TestInstance < ApplicationRecord
   has_many :user_test_instances
   has_many :users, through: :user_test_instances
 
+  # Callbacks
+
+  # Assign an examiner to a test instance before its save.
+  before_save :assign_examiner
+
   ## Validations
 
   validates :language, presence: true
@@ -32,12 +37,19 @@ class TestInstance < ApplicationRecord
 
   ## Methods
 
-  private
-
   def update_hash
     status_hash = Time.now.to_i if status_hash.nil?
 
     update(status_hash: Prime.prime_division(Time.now.to_i*status_hash*rand(status_hash)).last.first)
+  end
+
+  # Assign an examiner to the test instance (same language and lowest number of test in the last 7 days)
+  def assign_examiner
+    valid_examiners = User.examiners
+                          .can_take_test_instance
+                          .where(expert_language: self.language)
+
+    self.users << User.user_lower_nb_test(valid_examiners)
   end
 
 end

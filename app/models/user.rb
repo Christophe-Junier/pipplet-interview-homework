@@ -48,6 +48,15 @@ class User < ApplicationRecord
   # EXAMINER
   # ----------------------------------------
 
+  ## Scopes
+
+  # Examiner which can take a test instance
+  # validated can take as much as test instance
+  # pending validation can only take a maximum of 3 test instance
+  scope :can_take_test_instance, -> { where(status: 0,
+                                            test_instance_count: [0,1,2] )
+                                      .or( where(status: 1) ) }
+
   ## Attributes
 
   # Status of an examiner user -> default is pending_validation (model callback)
@@ -66,5 +75,26 @@ class User < ApplicationRecord
     it: 4,
     es: 5
   }
+
+  ## methods
+
+  # Given an users relation, it return the user with the lower number of test on the past 7 days
+  def self.user_lower_nb_test( record_of_users )
+    # An array that will contain user with their number of test associated
+    # example: [ {user: user, nb_of_test: n } ]
+    user_and_nbs_of_test_array = []
+
+    # Iterating over records of users to fill our array
+    record_of_users.each do |user|
+      last_seven_day_number_of_tests = user.test_instances.where(created_at: 7.days.ago..DateTime.now).count
+      user_and_nbs_of_test_array << { user: user, nb_of_test: last_seven_day_number_of_tests }
+    end
+
+    # Sorting the array by number of test
+    user_and_nbs_of_test_array.sort_by! { |hash| hash[:nb_of_test] }
+
+    # Returning the first user
+    user_and_nbs_of_test_array.first[:user]
+  end
 
 end
