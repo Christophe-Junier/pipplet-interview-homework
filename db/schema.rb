@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_051252) do
+ActiveRecord::Schema.define(version: 2020_12_05_051704) do
 
   create_table "test_instances", force: :cascade do |t|
     t.string "status_hash"
-    t.string "language"
+    t.integer "language", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_12_05_051252) do
     t.string "name"
     t.string "email"
     t.integer "role", default: 0
-    t.string "language"
+    t.integer "language", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status"
