@@ -56,4 +56,9 @@ class TestInstance < ApplicationRecord
     end
   end
 
+  # Assert the existence of a given language
+  def self.assert_existence( language )
+    ( TestInstance.languages.keys + TestInstance.languages.values ).include?(language)
+  end
+
 end
