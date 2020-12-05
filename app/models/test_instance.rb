@@ -23,7 +23,7 @@ class TestInstance < ApplicationRecord
 
   # Language of the test instance, there is no default language assigned
   # Usually 0 is used for default setting, so it start from 1.
-  enum test_language: {
+  enum language: {
     en: 1,
     fr: 2,
     de: 3,

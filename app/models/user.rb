@@ -44,7 +44,7 @@ class User < ApplicationRecord
 
   ## Attributes
 
-  # Status of an examiner user -> default is pending_validation (database setup)
+  # Status of an examiner user -> default is pending_validation (model callback)
   enum status: {
     pending_validation: 0,
     validated:          1,
