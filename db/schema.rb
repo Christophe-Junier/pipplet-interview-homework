@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_045955) do
+ActiveRecord::Schema.define(version: 2020_12_05_050243) do
 
   create_table "test_instances", force: :cascade do |t|
     t.integer "user_id"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_12_05_045955) do
     t.string "language"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status"
+    t.integer "expert_language"
   end
 
 end
