@@ -28,6 +28,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # A really fast json api -> https://github.com/jsonapi-serializer/jsonapi-serializer
 gem 'jsonapi-serializer'
 
+# Whenever is a Ruby gem that provides a clear syntax for writing and deploying cron jobs.
+gem 'whenever'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
