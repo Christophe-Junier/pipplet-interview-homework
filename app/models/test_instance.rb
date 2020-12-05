@@ -44,12 +44,16 @@ class TestInstance < ApplicationRecord
   end
 
   # Assign an examiner to the test instance (same language and lowest number of test in the last 7 days)
+  # If there are no examiner available, the test instance is still created, but no examiners are assigned to it.
+  # The best way I found is to recompute them automatically every day with a sidekiq task.
   def assign_examiner
     valid_examiners = User.examiners
                           .can_take_test_instance
                           .where(expert_language: self.language)
 
-    self.users << User.user_lower_nb_test(valid_examiners)
+    unless valid_examiners.empty?
+      self.users << User.user_lower_nb_test(valid_examiners)
+    end
   end
 
 end
