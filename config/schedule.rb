@@ -1,11 +1,13 @@
 ## Cron job list
+
+# Env settings
 ENV.each_key do |key|
   env key.to_sym, ENV[key]
 end
 set :environment, ENV["RAILS_ENV"]
 
-# Computing TestInstances status hash every 10minutes, using rake task
-every 2.minute do
+# Computing TestInstances status hash every 10 minutes, using rake task
+every 10.minute do
   rake 'update:test_instances_status_hash'
 end
 
@@ -18,7 +20,5 @@ end
 
 # bundle exec whenever --clear-crontab  # Cleaning whenever cron jobs
 
-# bundle exec whenever --update-crontab --set environment='development' # Updating crontab jobs and setting environment
+# bundle exec whenever --update-crontab # Updating crontab jobs and setting environment
 # bundle exec crontab -l   # Listing job on crontab
-
-# grep CRON  /var/log/syslog  # Greping Crontab logs
