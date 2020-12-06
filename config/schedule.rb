@@ -3,7 +3,7 @@
 env :PATH, ENV['PATH']
 
 # Computing TestInstances status hash every 20minutes, using rake task
-every 20.minute do
+every 2.minute do
   rake 'update:test_instances_status_hash'
 end
 

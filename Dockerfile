@@ -1,13 +1,10 @@
 FROM ruby:2.7.2
 LABEL maintainer="adrien@pipplet.com"
 
-RUN printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
-RUN apt-get update
-RUN apt-get install -qq -y --no-install-recommends apt-utils build-essential libpq-dev cron
-RUN cp /usr/share/zoneinfo/Europe/Paris /etc/localtime
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev cron
 
+RUN cp /usr/share/zoneinfo/Europe/Paris /etc/localtime
 ENV LANG C.UTF-8
-ENV RAILS_ENV development
 
 RUN mkdir -p /pipplet
 WORKDIR /pipplet
@@ -18,9 +15,20 @@ ADD Gemfile /pipplet/Gemfile
 ADD Gemfile.lock /pipplet/Gemfile.lock
 RUN bundle install
 
+# Adding schedule
+ADD ./config/schedule.rb /pipplet/config/
+
 # Expose our server port.
 EXPOSE 3000
 
+# Adding log
+Run mkdir ./log
+
+# Running whenever
+RUN bundle exec whenever && touch ./log/cron.log
+
+# Setting log entrypoint
+ENTRYPOINT crond && tail -f ./log/cron.log
+
 # Start server
-RUN bash -c "bundle exec whenever --update-crontab && cron -f"
 CMD ["bundle","exec","puma","-C","config/puma.rb"]
