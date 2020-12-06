@@ -18,27 +18,19 @@ class Api::V1::User::TestInstancesController < ApplicationController
   end
 
   def create
-    # Retrieving user, role 0 is there to be certain the user is a test taker.
-    @user = User.find_by(id: params[:user_id], role: 0)
+    begin
+      test_instance = TestInstance.new(language: params[:language], users: [ User.find_by(id: params[:user_id], role: 0) ])
+    rescue ActiveRecord::AssociationTypeMismatch # Catching empty user case
+      return render json: 'unvalid user id', status: :unprocessable_entity
+    rescue ArgumentError # Catching language error
+      return render json: 'unvalid language', status: :unprocessable_entity
+    end
 
-    # If user doesnt exist or isnt a test taker
-    return render json: { message: 'incorrect user id' }, status: 422 if @user.nil?
-
-    # A little bit tricky, due to enum taking over all kind of errors, we need to manually test if the language is uncorrect.
-    return  render json: { message: 'incorrect language' }, status: 422 unless TestInstance.assert_existence(params[:language])
-
-    # Initializing a new test instance and its user, then computing status_hash
-    @test_instance = TestInstance.new(test_instance_params)
-    @test_instance.users << @user
-
-    # Saving
-    return render json: { message: 'test instance created' }, status: 200 if @test_instance.save
+    if test_instance.save # Saving test instance
+      render json: test_instance, status: :created # If saved responding json with test instance data
+      test_instance.update_hash # Then updating hash
+    else
+      render json: test_instance.errors, status: :unprocessable_entity # Else responding with occuring errors
+    end
   end
-
-  private
-
-  def test_instance_params
-    params.require(:test_instance).permit(:language, :user_id)
-  end
-
 end
