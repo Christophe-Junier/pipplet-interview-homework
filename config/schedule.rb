@@ -4,8 +4,8 @@ ENV.each_key do |key|
 end
 set :environment, ENV["RAILS_ENV"]
 
-# Computing TestInstances status hash every 20minutes, using rake task
-every 2.minute do
+# Computing TestInstances status hash every 10minutes, using rake task
+every 10.minute do
   rake 'update:test_instances_status_hash'
 end
 

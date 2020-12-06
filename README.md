@@ -14,34 +14,16 @@
   $ docker build -t pipplet-interview .
   ```
 
-- 2: Run the app
+- 2: Run the whenever
 
   ```
   $ docker run --rm -it -v $(pwd):/pipplet -p 3000:3000 pipplet-interview
   ```
 
-- 3: Connect on the app (use a new terminal tab)
+- 3: Connect and run the app (use a new terminal tab)
 
   ```
-  $ docker run --rm -it -v $(pwd):/pipplet pipplet-interview bash
-  ```
-
-## Usefull whenever commands
-
-  ```
-  $ bundle exec whenever --clear-crontab  # Cleaning whenever cron jobs
-  ```
-
-  ```
-  $ bundle exec whenever --update-crontab --set environment='development' # Updating crontab jobs and setting environment
-  ```
-
-  ```
-  $ bundle exec crontab -l   # Listing job on crontab
-  ```
-
-  ```
-  $ grep CRON  /var/log/syslog  # Greping Crontab logs
+  $ docker run --rm -it -v $(pwd):/pipplet pipplet-interview bash rails s
   ```
 
 ## API documentation

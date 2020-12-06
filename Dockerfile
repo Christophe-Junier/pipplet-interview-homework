@@ -5,7 +5,6 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev cron
 
 RUN cp /usr/share/zoneinfo/Europe/Paris /etc/localtime
 ENV LANG C.UTF-8
-ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_ENV development
 
 RUN mkdir -p /pipplet
@@ -20,5 +19,5 @@ RUN bundle install
 # Expose our server port.
 EXPOSE 3000
 
-# Running server
-CMD bash -c "bundle exec whenever --update-crontab && cron -f && bundle exec puma -c config/puma.rb"
+# Running whenever
+CMD bash -c "bundle exec whenever --update-crontab && cron -f"
