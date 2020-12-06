@@ -19,7 +19,6 @@ class TestInstance < ApplicationRecord
   # Assign an examiner to a test instance before its save.
   before_create :assign_examiner
   # Update the status hash after creation
-  after_create :hash_update
 
   ## Validations
 
@@ -38,10 +37,6 @@ class TestInstance < ApplicationRecord
   }
 
   ## Methods
-
-  def hash_update
-    update_hash if status_hash.nil?
-  end
 
   def update_hash
     status_hash = Time.now.to_i if status_hash.nil?
