@@ -2,13 +2,13 @@ class Api::V1::User::TestInstancesController < ApplicationController
 
   def index
     # If user if found, then render a serialized model of the user test instance
-    # Else render a message error 
+    # Else render a message error
     if @user = User.find_by(id: params[:user_id], role: 0)
       render json: TestInstanceSerializer.new(@user.test_instances)
                                          .serializable_hash
                                          .to_json
     else
-      render json: { message: 'incorrect user id' }, status: 422
+      render json: { message: 'incorrect user id' }, status: :unprocessable_entity
     end
   end
 
