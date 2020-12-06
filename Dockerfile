@@ -2,7 +2,7 @@ FROM ruby:2.7.2
 LABEL maintainer="adrien@pipplet.com"
 
 RUN apt-get update
-RUN apt-get install -qq -y --no-install-recommends build-essential libpq-dev cron
+RUN apt-get install -qq -y --no-install-recommends apt-utils build-essential libpq-dev cron
 RUN cp /usr/share/zoneinfo/Europe/Paris /etc/localtime
 
 ENV LANG C.UTF-8
