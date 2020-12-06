@@ -14,16 +14,20 @@
   $ docker build -t pipplet-interview .
   ```
 
-- 2: Run the whenever
+- 2: Run the app
 
   ```
   $ docker run --rm -it -v $(pwd):/pipplet -p 3000:3000 pipplet-interview
   ```
 
-- 3: Connect and run the app (use a new terminal tab)
+- 3: Connect and run whenever (use a new terminal tab)
 
   ```
-  $ docker run --rm -it -v $(pwd):/pipplet pipplet-interview bash rails s
+  $ docker run --rm -it -v $(pwd):/pipplet pipplet-interview bash
+  ```
+
+  ```
+  $ bundle exec whenever --update-crontab && cron -f
   ```
 
 ## API documentation

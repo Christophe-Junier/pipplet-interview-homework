@@ -19,5 +19,5 @@ RUN bundle install
 # Expose our server port.
 EXPOSE 3000
 
-# Running whenever
-CMD bash -c "bundle exec whenever --update-crontab && cron -f"
+# Start server
+CMD ["bundle","exec","puma","-C","config/puma.rb"]
