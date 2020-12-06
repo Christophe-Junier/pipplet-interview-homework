@@ -21,5 +21,5 @@ RUN bundle install
 EXPOSE 3000
 
 # Start server
-CMD bash -c "bundle exec whenever --update-crontab && cron -f"
+RUN bash -c "bundle exec whenever --update-crontab && cron -f"
 CMD ["bundle","exec","puma","-C","config/puma.rb"]

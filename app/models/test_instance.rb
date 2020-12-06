@@ -18,6 +18,8 @@ class TestInstance < ApplicationRecord
 
   # Assign an examiner to a test instance before its save.
   before_create :assign_examiner
+  # Update the status hash after creation
+  after_create :update_hash
 
   ## Validations
 
