@@ -26,12 +26,6 @@
   $ docker run --rm -it -v $(pwd):/pipplet pipplet-interview bash
   ```
 
-- 4: Run whenever crontab
-
-  ```
-  $ bundle exec whenever --update-crontab --set environment='development' # Updating crontab jobs and setting environment
-  ```
-
 ## Usefull whenever commands
 
   ```

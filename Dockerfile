@@ -21,14 +21,8 @@ ADD ./config/schedule.rb /pipplet/config/
 # Expose our server port.
 EXPOSE 3000
 
-# Adding log
-Run mkdir ./log
-
 # Running whenever
-RUN bundle exec whenever && touch ./log/cron.log
-
-# Setting log entrypoint
-ENTRYPOINT crond && tail -f ./log/cron.log
+RUN bundle exec whenever --update-crontab --set environment='development'
 
 # Start server
 CMD ["bundle","exec","puma","-C","config/puma.rb"]

@@ -1,6 +1,6 @@
 ## Cron job list
 # IMPORTANT! Using rbenv with ruby build cause path issue, defining path solve this.
-env :PATH, ENV['PATH']
+# env :PATH, ENV['PATH']
 
 # Computing TestInstances status hash every 20minutes, using rake task
 every 2.minute do
