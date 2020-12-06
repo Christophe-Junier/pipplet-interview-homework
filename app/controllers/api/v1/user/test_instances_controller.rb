@@ -1,20 +1,15 @@
 class Api::V1::User::TestInstancesController < ApplicationController
 
   def index
-    # Retrieving user, role 0 is there to be certain the user is a test taker.
-    @user = User.find_by(id: params[:user_id], role: 0)
-
-    # If user doesnt exist or isnt a test taker
-    return render json: { message: 'incorrect user id' }, status: 422 if @user.nil?
-
-    # Retrieving all test instances of the user
-    @user_test_instances = @user.test_instances
-
-    # Serializing user test instance , to json.
-    @data = TestInstanceSerializer.new(@user_test_instances).serializable_hash.to_json
-
-    # Returning data
-    return render json: @data, status: 200
+    # If user if found, then render a serialized model of the user test instance
+    # Else render a message error 
+    if @user = User.find_by(id: params[:user_id], role: 0)
+      render json: TestInstanceSerializer.new(@user.test_instances)
+                                         .serializable_hash
+                                         .to_json
+    else
+      render json: { message: 'incorrect user id' }, status: 422
+    end
   end
 
   def create
