@@ -3,25 +3,51 @@
 ## Prerequisites
 
 - Docker [Installation help](https://docs.docker.com/get-docker/)
+- Knowledge about Whenever Gem [Whenever github](https://github.com/javan/whenever)
 
 ## Installation steps
+- 0: Open a terminal on the root of the project
 
-- firsty, build the image with the command:
+- 1: Build docker app
 
   ```
   $ docker build -t pipplet-interview .
   ```
 
-- secondly, run the app with the command:
+- 2: Run the app
 
   ```
   $ docker run --rm -it -v $(pwd):/pipplet -p 3000:3000 pipplet-interview
   ```
 
-## How to run a command on the docker app
+- 3: Connect on the app
 
   ```
-  $ docker run --rm -it -v $(pwd):/pipplet -p 3000:3000 pipplet-interview bash
+  $ docker run --rm -it -v $(pwd):/pipplet pipplet-interview bash
+  ```
+
+- 4: Run whenever crontab
+
+  ```
+  $ bundle exec whenever --update-crontab --set environment='development' # Updating crontab jobs and setting environment
+  ```
+
+## Usefull whenever commands
+
+  ```
+  $ bundle exec whenever --clear-crontab  # Cleaning whenever cron jobs
+  ```
+
+  ```
+  $ bundle exec whenever --update-crontab --set environment='development' # Updating crontab jobs and setting environment
+  ```
+
+  ```
+  $ bundle exec crontab -l   # Listing job on crontab
+  ```
+
+  ```
+  $ grep CRON  /var/log/syslog  # Greping Crontab logs
   ```
 
 ## API documentation
