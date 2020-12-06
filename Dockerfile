@@ -16,11 +16,10 @@ RUN gem install bundler
 ADD Gemfile /pipplet/Gemfile
 ADD Gemfile.lock /pipplet/Gemfile.lock
 RUN bundle install
-RUN bundle exec whenever --update-crontab
 
 # Expose our server port.
 EXPOSE 3000
 
 # Start server
-CMD cron
+CMD bash -c "bundle exec whenever --update-crontab && cron -f"
 CMD ["bundle","exec","puma","-C","config/puma.rb"]
