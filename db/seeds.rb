@@ -54,7 +54,7 @@ end
 # Using array of language to ease creation of datas
 3.times do
   (1..5).to_a.each do |language|
-    test_instance = TestInstance.new( language: language )
+    test_instance = TestInstance.new( language: language, status_hash: rand(1..10) )
     test_instance.users << User.test_taker.sample(1)
     test_instance.save
   end
