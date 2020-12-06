@@ -89,7 +89,9 @@ curl -X POST -H 'Content-Type: application/json' -i http://localhost:3000/user/t
 #### HANDLED RESPONSE
 
 HTTP 200: {"message":"test instance created"} -> The new test instance got succesfully created.
+
 HTTP 422: {"message":"incorrect user id"} -> The user id is not of a test taker, or is unknown.
+
 HTTP 422: {"message":"incorrect language"} -> The language is unknown.
 
 ### Retrieving all TestInstance of an user
