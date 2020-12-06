@@ -20,7 +20,7 @@
   $ docker run --rm -it -v $(pwd):/pipplet -p 3000:3000 pipplet-interview
   ```
 
-- 3: Connect on the app
+- 3: Connect on the app (use a new terminal tab)
 
   ```
   $ docker run --rm -it -v $(pwd):/pipplet pipplet-interview bash
