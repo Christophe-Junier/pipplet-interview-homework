@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
+# ----------------------------------------
+# USER: Users of the application
+# ----------------------------------------
 class User < ApplicationRecord
-
-  # ----------------------------------------
-  # USER: Users of the application
-  # ----------------------------------------
-
   ## Relations
 
   # Every kind of user can have 0 to infinite numbers of tests
@@ -22,17 +22,17 @@ class User < ApplicationRecord
   ## Scopes
 
   # Basic scope to retrieve a type of user
-  scope :test_takers, -> { where( role: 0) }
-  scope :admins,      -> { where( role: 1) }
-  scope :examiners,   -> { where( role: 2) }
+  scope :test_takers, -> { where(role: 0) }
+  scope :admins,      -> { where(role: 1) }
+  scope :examiners,   -> { where(role: 2) }
 
   ## Attributes
 
   # Role of the user -> default is test_taker (database setup)
   enum role: {
     test_taker: 0,
-    admin:      1,
-    examiner:   2
+    admin: 1,
+    examiner: 2
   }
 
   # Spoken and written language of an user, default would be 'en' for internationalization purpose (database setup)
@@ -42,7 +42,7 @@ class User < ApplicationRecord
     en: 0,
     fr: 1
   },
-   _prefix: :speak
+       _prefix: :speak
 
   # ----------------------------------------
   # EXAMINER
@@ -53,21 +53,24 @@ class User < ApplicationRecord
   # Examiner which can take a test instance
   # validated can take as much as test instance
   # pending validation can only take a maximum of 3 test instance
-  scope :can_take_test_instance, -> { where(status: 0,
-                                            test_instance_count: [0,1,2] )
-                                      .or( where(status: 1) ) }
+  scope :can_take_test_instance, lambda {
+                                   where(status: 0,
+                                         test_instance_count: [0, 1, 2])
+                                     .or(where(status: 1))
+                                 }
 
   ## Attributes
 
   # Status of an examiner user -> default is pending_validation (model callback)
   enum status: {
     pending_validation: 0,
-    validated:          1,
-    rejected:           2
+    validated: 1,
+    rejected: 2
   }
 
   # Expertise language of an examiner user, there is no default language assigned
-  # Usually 0 is used for default setting, so it start from 1, doing this, if a default language is later needed, it could be 0
+  # Usually 0 is used for default setting, so it start from 1, doing this,
+  # if a default language is later needed, it could be 0
   enum expert_language: {
     en: 1,
     fr: 2,
@@ -79,7 +82,7 @@ class User < ApplicationRecord
   ## methods
 
   # Given an users relation, it return the user with the lower number of test on the past 7 days
-  def self.user_lower_nb_test( record_of_users )
+  def self.user_lower_nb_test(record_of_users)
     # An array that will contain user with their number of test associated
     # example: [ {user: user, nb_of_test: n } ]
     user_and_nbs_of_test_array = []
@@ -96,5 +99,4 @@ class User < ApplicationRecord
     # Returning the first user
     user_and_nbs_of_test_array.first[:user]
   end
-
 end

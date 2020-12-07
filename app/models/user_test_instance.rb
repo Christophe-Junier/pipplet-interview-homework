@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
+# ----------------------------------------
+# USERTESTINSTANCE: a joining table matching test_instances and users.
+# ----------------------------------------
 class UserTestInstance < ApplicationRecord
-
-  # ----------------------------------------
-  # USERTESTINSTANCE: a joining table matching test_instances and users.
-  # ----------------------------------------
-
   ## Relations
 
   # An user test instance is the link between users and test instances
@@ -12,5 +12,4 @@ class UserTestInstance < ApplicationRecord
   # That way we can later, easely get users that got less than 3 test_instance
   belongs_to :user, counter_cache: :test_instance_count
   belongs_to :test_instance
-
 end

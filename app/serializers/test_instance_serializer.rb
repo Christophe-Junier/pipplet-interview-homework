@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TestInstanceSerializer
   include JSONAPI::Serializer
   attributes :language, :status_hash, :created_at, :updated_at
