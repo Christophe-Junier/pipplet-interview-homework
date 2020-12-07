@@ -1,0 +1,10 @@
+AllCops:
+  Exclude:
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'db/*'
+    - 'tmp/**/*'
+
+  NewCops: enable
