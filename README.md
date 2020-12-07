@@ -2,6 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/Christophe-Junier/pipplet-interview-homework.svg?style=svg&circle-token=213527000e0c50498dd637b0ea77f7c7e586bacc)](https://circleci.com/gh/Christophe-Junier/pipplet-interview-homework)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop-hq/rubocop)
+[![codecov](https://codecov.io/gh/Christophe-Junier/pipplet-interview-homework/branch/main/graph/badge.svg)](https://codecov.io/gh/Christophe-Junier/pipplet-interview-homework)
 
 ## Prerequisites
 
