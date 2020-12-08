@@ -52,7 +52,7 @@ class TestInstance < ApplicationRecord
                           .can_take_test_instance
                           .where(expert_language: language)
 
-    users << User.user_lower_nb_test(valid_examiners) unless valid_examiners.empty?
+    self.users << User.user_lower_nb_test(valid_examiners) unless valid_examiners.empty?
   end
 
   # Assert the existence of a given language
