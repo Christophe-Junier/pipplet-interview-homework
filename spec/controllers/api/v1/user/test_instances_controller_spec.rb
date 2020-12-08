@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'API V1 USER TEST_INSTANCES', type: 'request' do
   describe 'POST /user/test_instances' do
     context 'with valid parameters' do
@@ -33,4 +34,24 @@ RSpec.describe 'API V1 USER TEST_INSTANCES', type: 'request' do
       end
     end
   end
+
+  describe 'GET /user/test_instances?user_id' do
+    context 'with valid user id' do
+      let(:user) { create(:user, :test_taker) }
+
+      it 'respond ok' do
+        user
+        get '/user/test_instances?user_id=1'
+        expect(response).to have_http_status :ok
+      end
+    end
+
+    context 'with unvalid user id' do
+      it 'respond unprocessable_entity' do
+        get '/user/test_instances?user_id=2'
+        expect(response).to have_http_status :unprocessable_entity
+      end
+    end
+  end
 end
+# rubocop:enable Metrics/BlockLength
