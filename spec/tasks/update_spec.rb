@@ -8,7 +8,7 @@ describe 'test_instances_status_hash' do
   let(:test_instance) { create(:test_instance, :en) }
 
   it 'update test_instances status hash' do
-    2.times{ test_instance }
+    2.times { test_instance }
 
     expect(TestInstance.first.status_hash).to eq(nil)
     run_task(task_name: 'test_instances_status_hash')

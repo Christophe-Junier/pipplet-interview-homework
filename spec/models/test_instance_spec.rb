@@ -1,6 +1,8 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe TestInstance, type: :model do
   let(:test_instance)    { create(:test_instance, :fr) }
   let(:valid_examiner)   { create(:user, :examiner, :examiner_validated, :examiner_fr) }
@@ -33,4 +35,6 @@ RSpec.describe TestInstance, type: :model do
     @test_instance.assign_examiner
     expect(@test_instance.users.count).to eq(0)
   end
+
+  # rubocop:enable Metrics/BlockLength
 end
