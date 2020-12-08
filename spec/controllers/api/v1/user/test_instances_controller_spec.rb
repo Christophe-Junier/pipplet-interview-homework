@@ -33,6 +33,18 @@ RSpec.describe 'API V1 USER TEST_INSTANCES', type: 'request' do
         expect(response).to have_http_status :unprocessable_entity
       end
     end
+
+    context 'with saving error' do
+      let(:valid_params) { { user_id: User.first.id, language: 'fr' } }
+      let(:user) { create(:user, :test_taker) }
+
+      it 'doesnt creates a new test_instance' do
+        user
+        allow_any_instance_of(TestInstance).to receive(:save).and_return(false)
+        expect { post '/user/test_instances', params: valid_params }.to_not change(TestInstance, :count)
+        expect(response).to have_http_status :unprocessable_entity
+      end
+    end
   end
 
   describe 'GET /user/test_instances?user_id' do
