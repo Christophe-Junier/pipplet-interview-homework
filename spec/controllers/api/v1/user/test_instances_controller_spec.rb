@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'API V1 USER TEST_INSTANCES', type: 'request' do
   describe 'POST /user/test_instances' do
     context 'with valid parameters' do
@@ -53,3 +54,4 @@ RSpec.describe 'API V1 USER TEST_INSTANCES', type: 'request' do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
