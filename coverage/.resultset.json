@@ -29,7 +29,7 @@
           null,
           1,
           1,
-          1,
+          2,
           null,
           null,
           null,
@@ -59,7 +59,7 @@
           null,
           null,
           1,
-          0,
+          1,
           null,
           null,
           null,
@@ -117,92 +117,6 @@
           null
         ]
       },
-      "/home/christophe/Bureau/pipplet-interview-homework/app/controllers/application_controller.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/home/christophe/Bureau/pipplet-interview-homework/app/controllers/api/v1/user/test_instances_controller.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          2,
-          1,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          null,
-          0,
-          null,
-          null,
-          0,
-          null,
-          0,
-          null,
-          null,
-          0,
-          null,
-          null,
-          1,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/christophe/Bureau/pipplet-interview-homework/app/serializers/test_instance_serializer.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/christophe/Bureau/pipplet-interview-homework/app/models/user_test_instance.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null
-        ]
-      },
       "/home/christophe/Bureau/pipplet-interview-homework/app/models/test_instance.rb": {
         "lines": [
           null,
@@ -246,25 +160,111 @@
           null,
           null,
           1,
-          0,
+          1,
           null,
-          0,
+          1,
           null,
           null,
           null,
           null,
           null,
           1,
-          0,
+          1,
           null,
           null,
           null,
-          0,
+          1,
           null,
           null,
           null,
           1,
           0,
+          null,
+          null
+        ]
+      },
+      "/home/christophe/Bureau/pipplet-interview-homework/app/controllers/application_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/home/christophe/Bureau/pipplet-interview-homework/app/controllers/api/v1/user/test_instances_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          2,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          4,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          2,
+          null,
+          null,
+          1,
+          null,
+          1,
+          2,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/christophe/Bureau/pipplet-interview-homework/app/models/user_test_instance.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/christophe/Bureau/pipplet-interview-homework/app/serializers/test_instance_serializer.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
           null,
           null
         ]
@@ -333,6 +333,6 @@
         }
       }
     },
-    "timestamp": 1607465135
+    "timestamp": 1607465926
   }
 }
