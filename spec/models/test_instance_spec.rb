@@ -35,6 +35,5 @@ RSpec.describe TestInstance, type: :model do
     @test_instance.assign_examiner
     expect(@test_instance.users.count).to eq(0)
   end
-
-  # rubocop:enable Metrics/BlockLength
 end
+# rubocop:enable Metrics/BlockLength
