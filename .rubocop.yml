@@ -10,4 +10,4 @@ AllCops:
   NewCops: enable
 
 Layout/EndOfLine:
-  EnforcedStyle: crlf
+  EnforcedStyle: lf
