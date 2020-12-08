@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Scopping module on routes, to have better routing name
   scope module: 'api' do
     scope module: 'v1' do
-      namespace :user do 
+      namespace :user do
         resources :test_instances, only: %i[create index]
       end
     end
